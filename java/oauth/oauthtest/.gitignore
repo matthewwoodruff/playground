@@ -1,0 +1,17 @@
+# osx noise
+.DS_Store
+profile
+
+target/*
+
+build/*
+
+# intellij
+.idea/
+*.ipr
+*.iws
+*.iml
+out/
+
+# gradle
+.gradle

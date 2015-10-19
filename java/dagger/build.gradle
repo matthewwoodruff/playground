@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: "net.ltgt.apt"
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.3"
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    compile 'com.google.dagger:dagger:2.0'
+    compileOnly 'com.google.dagger:dagger-compiler:2.0'
+    compile "org.glassfish:javax.annotation:10.0-b28"
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-all:1.10.19'
+}
