@@ -4,10 +4,7 @@ import com.thoughtworks.java8.functionalInterfaces.FromStringBuilder;
 import com.thoughtworks.java8.functionalInterfaces.MyFunctionalInterface;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class MyClass implements MyFunctionalInterface {
 
@@ -198,6 +195,9 @@ public class MyClass implements MyFunctionalInterface {
                 .parallelStream()
                 .filter(s -> s.length() > 0)
                 .forEach(System.out::println);
+
+        String myString = "asd";
+        instanceMethod(myString::toLowerCase);
     }
 
     // Maps
@@ -232,4 +232,6 @@ public class MyClass implements MyFunctionalInterface {
     public static MyClass producer() {
         return new MyClass();
     }
+
+    public void instanceMethod(Supplier<String> a) {}
 }

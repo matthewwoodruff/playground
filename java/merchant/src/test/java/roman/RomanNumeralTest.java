@@ -1,3 +1,5 @@
+package roman;
+
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -20,16 +22,6 @@ public class RomanNumeralTest {
         assertThat(RomanNumeral.I.applyTo(2), is(3));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void ICannnotBeAppliedTo3() throws Exception {
-        RomanNumeral.I.applyTo(3);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void ICannnotBeAppliedTo4() throws Exception {
-        RomanNumeral.I.applyTo(4);
-    }
-
     @Test
     public void ICanBeAppliedTo5() throws Exception {
         assertThat(RomanNumeral.I.applyTo(5), is(4));
@@ -43,31 +35,6 @@ public class RomanNumeralTest {
     @Test
     public void VCanBeAppliedTo1() throws Exception {
         assertThat(RomanNumeral.V.applyTo(1), is(6));
-    }
-
-    @Test
-    public void ICanBeAppliedTo6() throws Exception {
-        assertThat(RomanNumeral.I.applyTo(6), is(7));
-    }
-
-    @Test
-    public void ICanBeAppliedTo7() throws Exception {
-        assertThat(RomanNumeral.I.applyTo(7), is(8));
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void ICannotBeAppliedTo8() throws Exception {
-        RomanNumeral.I.applyTo(8);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void ICannotBeAppliedTo9() throws Exception {
-        RomanNumeral.I.applyTo(9);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void VCannotBeAppliedTo5() throws Exception {
-        RomanNumeral.V.applyTo(5);
     }
 
     @Test
@@ -99,5 +66,41 @@ public class RomanNumeralTest {
     public void XCanBeAppliedTo4() throws Exception {
         assertThat(RomanNumeral.X.applyTo(4), is(14));
     }
+
+    @Test
+    public void XCanBeAppliedTo10() throws Exception {
+        assertThat(RomanNumeral.X.applyTo(10), is(20));
+    }
+
+    @Test
+    public void XCanBeAppliedTo100() throws Exception {
+        assertThat(RomanNumeral.X.applyTo(100), is(90));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void ICannnotBeAppliedTo3() throws Exception {
+        RomanNumeral.I.applyTo(3);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void ICannnotBeAppliedTo4() throws Exception {
+        RomanNumeral.I.applyTo(4);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void ICannotBeAppliedTo8() throws Exception {
+        RomanNumeral.I.applyTo(8);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void ICannotBeAppliedTo9() throws Exception {
+        RomanNumeral.I.applyTo(9);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void VCannotBeAppliedTo5() throws Exception {
+        RomanNumeral.V.applyTo(5);
+    }
+
 
 }
