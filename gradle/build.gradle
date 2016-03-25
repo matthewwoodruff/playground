@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+task helloworld << {
+  println "Hello World"
+}
+
+task newtask(dependsOn: helloworld) << {
+  println "new task"
+}
