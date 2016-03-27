@@ -1,0 +1,5 @@
+task myTask << {
+  println "Running my task"
+}
+
+myTask.enabled false

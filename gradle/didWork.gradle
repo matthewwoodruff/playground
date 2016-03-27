@@ -1,0 +1,11 @@
+apply plugin: 'java'
+
+task myTask {
+  dependsOn compileJava
+}
+
+myTask << {
+  if (tasks.compileJava.didWork) {
+    println "compileJava didWork ok"
+  }
+}
