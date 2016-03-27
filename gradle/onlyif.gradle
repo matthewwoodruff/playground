@@ -1,0 +1,5 @@
+task myTask
+
+myTask.onlyIf {
+  System.properties['load'] != 'true'
+}
