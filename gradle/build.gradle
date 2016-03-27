@@ -15,6 +15,12 @@ atask << {
 // configuration blocks are ran before task
 // execution
 atask {
+  doFirst {
+    println "atask doFirst 2nd"
+  }
+  doLast {
+    println "atask doLast 1st"
+  }
   println "Configuring atask"
 }
 
@@ -25,9 +31,21 @@ helloworld << {
 }
 
 // Depends On - configuration
-atask() {
+atask {
   dependsOn helloworld
   dependsOn << helloworld
   dependsOn helloworld, helloworld
 }
 atask.dependsOn helloworld
+
+// Do first - calls to dofirst puts
+// the new block at the start
+atask.doFirst {
+  println "atask dofirst 1st"
+}
+
+// Do last - calls to doLast puts
+// the new block at the end
+atask.doLast {
+  println "atask doLast 2nd"
+}
