@@ -1,9 +1,33 @@
 apply plugin: 'java'
 
-task helloworld << {
+// tasks are first class objects in the gradle build environment
+task atask(dependsOn: build)
+
+// Assigning an action to as task
+atask << {
+  println "this is "
+}
+atask << {
+  println "a task"
+}
+// This is a configuration block
+// doesn't add to the task atask
+// configuration blocks are ran before task
+// execution
+atask {
+  println "Configuring atask"
+}
+
+task helloworld(dependsOn: [build])
+
+helloworld << {
   println "Hello World"
 }
 
-task newtask(dependsOn: helloworld) << {
-  println "new task"
+// Depends On - configuration
+atask() {
+  dependsOn helloworld
+  dependsOn << helloworld
+  dependsOn helloworld, helloworld
 }
+atask.dependsOn helloworld
