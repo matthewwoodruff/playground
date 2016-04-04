@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 // tasks are first class objects in the gradle build environment
-task atask(dependsOn: build)
+task atask(dependsOn: build, description: "My new task")
 
 // Assigning an action to as task
 atask << {
