@@ -1,65 +1,45 @@
 allprojects {
-  apply plugin: 'java'
-  apply plugin: 'idea'
+    apply plugin: 'idea'
 
-  repositories {
-    mavenCentral()
-  }
+    repositories {
+        mavenCentral()
+    }
+}
 
-  sourceCompatibility = JavaVersion.VERSION_1_8
-  targetCompatibility = JavaVersion.VERSION_1_8
+subprojects {
+    apply plugin: 'java'
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    dependencies {
+        testCompile 'junit:junit:4.12'
+        testCompile 'org.hamcrest:hamcrest-all:1.3'
+    }
+
+    test {
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+        reports {
+            junitXml.enabled = true
+            html.enabled = true
+        }
+    }
+}
+
+idea {
+    project {
+        jdkName = '1.8'
+        languageLevel = '8'
+    }
+    module {
+        downloadSources = true
+    }
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = "2.12"
 }
 
-// tasks are first class objects in the gradle build environment
-task atask(dependsOn: build, description: "My new task")
-
-// Assigning an action to as task
-atask << {
-  println "this is "
-}
-atask << {
-  println "a task"
-}
-// This is a configuration block
-// doesn't add to the task atask
-// configuration blocks are ran before task
-// execution
-atask {
-  doFirst {
-    println "atask doFirst 2nd"
-  }
-  doLast {
-    println "atask doLast 1st"
-  }
-  println "Configuring atask"
-}
-
-task helloworld(dependsOn: [build])
-
-helloworld << {
-  println "Hello World"
-}
-
-// Depends On - configuration
-atask {
-  dependsOn helloworld
-  dependsOn << helloworld
-  dependsOn helloworld, helloworld
-}
-atask.dependsOn helloworld
-
-// Do first - calls to dofirst puts
-// the new block at the start
-atask.doFirst {
-  println "atask dofirst 1st"
-}
-
-// Do last - calls to doLast puts
-// the new block at the end
-atask.doLast {
-  println "atask doLast 2nd"
-}
+defaultTasks 'clean', 'build'

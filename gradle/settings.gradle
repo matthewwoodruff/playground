@@ -1,1 +1,1 @@
-include 'file-api'
+include 'file-api', 'common'
