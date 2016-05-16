@@ -5,10 +5,10 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class HelloWorldTest {
+public class CommonTaskTest {
 
     @Test
-    public void shouldReturnHelloWorld() throws Exception {
-        assertThat(new HelloWorld().getGreeting(), is("Hello World"));
+    public void shouldBeAllGood() throws Exception {
+        assertThat(new CommonTask().getStatus(), is("all is good"));
     }
 }

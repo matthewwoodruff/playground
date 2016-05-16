@@ -6,4 +6,8 @@ public class HelloWorld {
         return "Hello World";
     }
 
+    public boolean isAllGood() {
+        return new HelloWorldCommon().getGreeting() != null;
+    }
+
 }
