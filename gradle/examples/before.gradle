@@ -1,0 +1,10 @@
+task myTask << {
+  println "Hello"
+}
+
+task otherTask << {
+  println "Other task"
+}
+
+myTask.dependsOn << [otherTask]
+
