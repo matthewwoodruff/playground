@@ -1,12 +1,12 @@
 package com.thoughtworks.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
 
 public class Saying {
 
     private long id;
-
     private String content;
+    private LocalDate date;
 
     public Saying() {}
 
@@ -14,14 +14,18 @@ public class Saying {
         this.content = content;
     }
 
-    @JsonProperty
     public long getId() {
         return id;
     }
 
-    @JsonProperty
     public String getContent() {
         return content;
     }
 
+    public LocalDate getDate() {
+        if (date == null) {
+            throw new NullPointerException(  );
+        }
+        return date;
+    }
 }

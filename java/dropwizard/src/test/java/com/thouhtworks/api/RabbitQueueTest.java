@@ -36,7 +36,7 @@ public class RabbitQueueTest {
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 logger.info("Received:  '" + new String(body) + "'");
                 latch.countDown();
-                getChannel().basicNack();
+                getChannel().basicNack(1l, true, true);
             }
         };
         channel.queueDeclare(MY_QUEUE, false, true, true, null);
