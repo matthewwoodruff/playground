@@ -1,0 +1,25 @@
+fn gcd(mut n: u64, mut m: u64) -> u64 {
+    assert!(n != 0 && m != 0);
+    while m != 0 {
+        if m < n {
+            let t = m; m = n; n = t;
+        }
+        m = m % n;
+    }
+    n
+}
+
+fn main() {
+    println!("Hello, world!");
+    let answer: u64 = gcd(10, 20) ;
+    println!("{}", answer);
+}
+
+fn myfunc( a_string: String, number: u64 ) {
+    if number == 0 {
+        println!("{}", a_string);
+    } else {
+        println!("{}", number);
+        myfunc(a_string, number - 1);
+    }
+}
